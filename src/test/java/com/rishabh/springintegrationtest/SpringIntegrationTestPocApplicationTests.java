@@ -46,10 +46,9 @@ class SpringIntegrationTestPocApplicationTests extends AbstractContainerBaseTest
         List<Student> studentList = List.of(Student.builder().id(UUID.randomUUID().toString()).firstName("rishabh").lastName("goyal").email("rishabhg@test.com").build(),
                 Student.builder().id(UUID.randomUUID().toString()).firstName("John").lastName("Snow").email("John@test.com").build());
         List<Student> savedList = studentRepository.saveAll(studentList);
-        System.out.println(studentList);
 
         //when
-        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/students").contentType(MediaType.APPLICATION_JSON));
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/students"));
 
         //then
         response.andExpect(MockMvcResultMatchers.status().isOk());
@@ -64,8 +63,7 @@ class SpringIntegrationTestPocApplicationTests extends AbstractContainerBaseTest
         studentRepository.save(student);
 
         //when
-        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/student/" + student.getId())
-                .contentType(MediaType.APPLICATION_JSON));
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/student/" + student.getId()));
 
         //then
         response.andExpect(MockMvcResultMatchers.status().isOk());
