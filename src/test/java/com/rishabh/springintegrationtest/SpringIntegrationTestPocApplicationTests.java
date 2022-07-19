@@ -38,9 +38,9 @@ class SpringIntegrationTestPocApplicationTests extends AbstractContainerBaseTest
     @Test
     public void givenStudents_whenGetAllStudents_thenListOfStudents() throws Exception {
 
-        /*System.out.println(MY_SQL_CONTAINER.getJdbcUrl());
+        System.out.println(MY_SQL_CONTAINER.getJdbcUrl());
         System.out.println(MY_SQL_CONTAINER.getUsername());
-        System.out.println(MY_SQL_CONTAINER.getPassword());*/
+        System.out.println(MY_SQL_CONTAINER.getPassword());
 
         //given
         List<Student> studentList = List.of(Student.builder().id(UUID.randomUUID().toString()).firstName("rishabh").lastName("goyal").email("rishabhg@test.com").build(),

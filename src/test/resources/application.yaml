@@ -4,6 +4,6 @@ spring:
       ddl-auto: 'create-drop'
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
   datasource:
-    url: localhost:1234
-    username: test
-    password: test
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
