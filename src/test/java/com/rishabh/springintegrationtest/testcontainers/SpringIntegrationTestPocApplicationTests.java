@@ -1,8 +1,9 @@
-package com.rishabh.springintegrationtest;
+package com.rishabh.springintegrationtest.testcontainers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rishabh.springintegrationtest.entity.Student;
 import com.rishabh.springintegrationtest.repository.StudentRepository;
+import com.rishabh.springintegrationtest.testcontainers.AbstractContainerBaseTest;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

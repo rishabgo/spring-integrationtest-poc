@@ -1,4 +1,4 @@
-package com.rishabh.springintegrationtest;
+package com.rishabh.springintegrationtest.testcontainers;
 
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
