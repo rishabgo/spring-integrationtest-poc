@@ -12,11 +12,15 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.TestPropertySource;
 
 import java.util.List;
+import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
+
+//Using TestRestTemplate to make api call
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class StudentControllerIT {
@@ -33,7 +37,7 @@ public class StudentControllerIT {
     @Test
     public void testRetrieveStudent() {
 
-        when(studentRepository.findAll()).thenReturn(List.of(Student.builder().id("1").firstName("rishabh").build(),
+        when(studentRepository.findAll()).thenReturn(List.of(Student.builder().id("1").firstName("Rishabh").build(),
                 Student.builder().id("2").firstName("George").build()));
 
         ResponseEntity<List<Student>> response = testRestTemplate.exchange(
@@ -41,7 +45,9 @@ public class StudentControllerIT {
                 });
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody().size()).isEqualTo(2);
+        assertThat(Objects.requireNonNull(response.getBody()).size()).isEqualTo(2);
+        assertThat(response.getBody().get(0).getFirstName()).isEqualTo("Rishabh");
+        assertThat(response.getBody().get(1).getFirstName()).isEqualTo("George");
     }
 
     private String createURLWithPort(String uri) {

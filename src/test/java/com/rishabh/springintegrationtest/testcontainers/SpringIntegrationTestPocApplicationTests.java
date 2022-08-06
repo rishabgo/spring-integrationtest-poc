@@ -3,13 +3,14 @@ package com.rishabh.springintegrationtest.testcontainers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rishabh.springintegrationtest.entity.Student;
 import com.rishabh.springintegrationtest.repository.StudentRepository;
-import com.rishabh.springintegrationtest.testcontainers.AbstractContainerBaseTest;
+import org.assertj.core.api.Assertions;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -24,6 +25,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @Testcontainers
 @AutoConfigureMockMvc
+@TestPropertySource(properties = {
+        "spring.datasource.url=${DB_URL}",
+        "spring.datasource.username=${DB_USERNAME}",
+        "spring.datasource.password=${DB_PASSWORD}",
+        "spring.datasource.driverClassName=${DB_DRIVER}",
+        "spring.jpa.database-platform=org.hibernate.dialect.MySQL5InnoDBDialect"
+})
 class SpringIntegrationTestPocApplicationTests extends AbstractContainerBaseTest {
 
     @Autowired
@@ -34,6 +42,12 @@ class SpringIntegrationTestPocApplicationTests extends AbstractContainerBaseTest
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Test
+    void contextLoads() {
+        Assertions.assertThat(mockMvc).isNotNull();
+        Assertions.assertThat(MY_SQL_CONTAINER.isRunning()).isTrue();
+    }
 
     //BDD style test
     @Test
