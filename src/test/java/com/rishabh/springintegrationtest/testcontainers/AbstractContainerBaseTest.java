@@ -3,7 +3,7 @@ package com.rishabh.springintegrationtest.testcontainers;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 
-public class AbstractContainerBaseTest {
+public class ContainerBaseTest {
 
     @Container
     static final MySQLContainer MY_SQL_CONTAINER;
