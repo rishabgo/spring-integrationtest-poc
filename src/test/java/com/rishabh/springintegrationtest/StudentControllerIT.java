@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 //Using TestRestTemplate to make api call
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class StudentControllerIT {
+public class StudentControllerTest {
 
     @LocalServerPort
     private int port;
