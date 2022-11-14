@@ -32,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         "spring.datasource.driverClassName=${DB_DRIVER}",
         "spring.jpa.database-platform=org.hibernate.dialect.MySQL5InnoDBDialect"
 })
-class SpringIntegrationTestPocApplicationTests extends AbstractContainerBaseTest {
+class SpringIntegrationTestPocApplicationTests extends ContainerBaseTest {
 
     @Autowired
     private StudentRepository studentRepository;
