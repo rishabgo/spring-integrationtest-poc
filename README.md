@@ -1,6 +1,7 @@
 # spring-integrationtest-poc
 Integration test in springboot for rest API's
 
-# Various Integration Test are covered in this project
-- Integration test using embedded database like H2 in memory db
-- Interation test using MYSql test container
+# Following things are covered in this project
+- Integration test MYSQL test container. Any other database image can also be used.
+- Using Mockito to mock dependencies.
+- Using MockMVC to make API call.
